@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore India - Tourist Destinations</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 22px 7%;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #fbbf24;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.45)),
+                url("https://images.unsplash.com/photo-1524492412937-b28074a5d7da") center/cover;
+
+            min-height: 430px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 40px 20px;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            background: #f59e0b;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 55px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #6b7280;
+        }
+
+        /* =========================
+           FILTERS
+        ========================== */
+
+        .filters {
+            background: white;
+            padding: 25px;
+
+            border-radius: 14px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+            gap: 18px;
+
+            margin-bottom: 35px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        select,
+        input {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #2563eb;
+        }
+
+        /* =========================
+           RESULTS HEADER
+        ========================== */
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .result-count {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* =========================
+           DESTINATION GRID
+        ========================== */
+
+        .destination-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+        .destination-card {
+            background: white;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 18px rgba(0, 0, 0, 0.07);
+
+            transition:
+                transform 0.25s,
+                box-shadow 0.25s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image {
+            height: 190px;
+
+            background:
+                linear-gradient(135deg,
+                    #dbeafe,
+                    #bfdbfe);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 55px;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .location {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-bottom: 12px;
+        }
+
+        .description {
+            color: #6b7280;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+
+            min-height: 68px;
+        }
+
+        .explore-button {
+            width: 100%;
+
+            margin-top: 18px;
+
+            padding: 11px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: white;
+
+            cursor: pointer;
+
+            font-weight: bold;
+        }
+
+        .explore-button:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================== */
+
+        .empty-state {
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: #6b7280;
+
+            display: none;
+        }
+
+        .empty-state div {
+            font-size: 50px;
+
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           MODAL
+        ========================== */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.6);
+
+            display: none;
+
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+
+            width: 100%;
+
+            max-width: 600px;
+
+            border-radius: 15px;
+
+            padding: 30px;
+
+            position: relative;
+
+            animation: modalOpen 0.25s ease;
+        }
+
+        @keyframes modalOpen {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+
+            right: 20px;
+            top: 15px;
+
+            border: none;
+
+            background: none;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            color: #6b7280;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 12px;
+        }
+
+        .modal-location {
+            color: #2563eb;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            color: #4b5563;
+
+            line-height: 1.8;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 30px 20px;
+
+            margin-top: 30px;
+        }
+
+        footer p {
+            color: #9ca3af;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .destination-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .filters {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .filter-group:last-child {
+                grid-column: 1 / -1;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-group:last-child {
+                grid-column: auto;
+            }
+
+            .hero {
+                min-height: 380px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .results-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+     HEADER
+========================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                Explore<span>India</span>
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#destinations">Destinations</a>
+                </li>
+
+                <li>
+                    <a href="#about">About</a>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+     HERO
+========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Discover Incredible India</h1>
+
+            <p>
+                Explore historic monuments, beautiful cities,
+                spiritual destinations and unforgettable places
+                across India.
+            </p>
+
+            <a href="#destinations" class="hero-button">
+                Explore Destinations
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     MAIN
+========================== -->
+
+    <main id="destinations">
+
+        <div class="section-title">
+
+            <h2>Explore Tourist Destinations</h2>
+
+            <p>
+                Find your next destination by state or city.
+            </p>
+
+        </div>
+
+
+        <!-- FILTERS -->
+
+        <div class="filters">
+
+            <div class="filter-group">
+
+                <label for="stateFilter">
+                    State
+                </label>
+
+                <select id="stateFilter">
+
+                    <option value="all">
+                        All States
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="cityFilter">
+                    City
+                </label>
+
+                <select id="cityFilter">
+
+                    <option value="all">
+                        All Cities
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <label for="searchInput">
+                    Search Destination
+                </label>
+
+                <input type="text" id="searchInput" placeholder="Search Taj Mahal, Fort, Temple...">
+
+            </div>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <div class="results-header">
+
+            <h3>
+                Popular Destinations
+            </h3>
+
+            <span class="result-count" id="resultCount">
+                0 destinations
+            </span>
+
+        </div>
+
+
+        <!-- CARDS -->
+
+        <div class="destination-grid" id="destinationGrid">
+        </div>
+
+
+        <!-- EMPTY -->
+
+        <div class="empty-state" id="emptyState">
+
+            <div>🔍</div>
+
+            <h3>
+                No destinations found
+            </h3>
+
+            <p>
+                Try changing your state, city or search.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+     MODAL
+========================== -->
+
+    <div class="modal" id="destinationModal">
+
+        <div class="modal-content">
+
+            <button class="close-modal" id="closeModal">
+                &times;
+            </button>
+
+            <h2 id="modalTitle">
+                Destination
+            </h2>
+
+            <div class="modal-location" id="modalLocation">
+            </div>
+
+            <p class="modal-description" id="modalDescription">
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+     FOOTER
+========================== -->
+
+    <footer id="about">
+
+        <p>
+            © 2026 Explore India. Discover beautiful places.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        /*
+         * ============================================
+         * API URLs
+         * ============================================
+         */
+
+        const API_BASE_URL = "http://localhost:8080/api";
+
+        const STATES_API =
+            `${API_BASE_URL}/states`;
+
+        const CITIES_API =
+            `${API_BASE_URL}/cities`;
+
+        const TOURIST_PLACES_API =
+            `${API_BASE_URL}/tourist-places`;
+
+
+        /*
+         * ============================================
+         * DATA
+         * ============================================
+         */
+
+        let states = [];
+        let cities = [];
+        let touristPlaces = [];
+
+
+        /*
+         * ============================================
+         * DOM ELEMENTS
+         * ============================================
+         */
+
+        const stateFilter =
+            document.getElementById("stateFilter");
+
+        const cityFilter =
+            document.getElementById("cityFilter");
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const destinationGrid =
+            document.getElementById("destinationGrid");
+
+        const resultCount =
+            document.getElementById("resultCount");
+
+        const emptyState =
+            document.getElementById("emptyState");
+
+        const modal =
+            document.getElementById("destinationModal");
+
+        const modalTitle =
+            document.getElementById("modalTitle");
+
+        const modalLocation =
+            document.getElementById("modalLocation");
+
+        const modalDescription =
+            document.getElementById("modalDescription");
+
+        const closeModal =
+            document.getElementById("closeModal");
+
+
+        /*
+         * ============================================
+         * API HELPER
+         * ============================================
+         */
+
+        async function fetchApi(url) {
+
+            const response = await fetch(url);
+
+            if (!response.ok) {
+
+                throw new Error(
+                    `HTTP error: ${response.status}`
+                );
+
+            }
+
+            const result = await response.json();
+
+            if (!result.success) {
+
+                throw new Error(
+                    result.message || "API request failed"
+                );
+
+            }
+
+            return result.data;
+        }
+
+
+        /*
+         * ============================================
+         * LOAD ALL DATA
+         * ============================================
+         */
+
+        async function loadData() {
+
+            try {
+
+                /*
+                 * Call all three APIs
+                 */
+
+                const [
+                    statesData,
+                    citiesData,
+                    touristPlacesData
+                ] = await Promise.all([
+
+                    fetchApi(STATES_API),
+
+                    fetchApi(CITIES_API),
+
+                    fetchApi(TOURIST_PLACES_API)
+
+                ]);
+
+
+                /*
+                 * Store API data
+                 */
+
+                states = statesData;
+
+                cities = citiesData;
+
+                touristPlaces = touristPlacesData;
+
+
+                /*
+                 * Populate UI
+                 */
+
+                loadStates();
+
+                loadCities();
+
+                displayDestinations();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Failed to load data:",
+                    error
+                );
+
+                destinationGrid.innerHTML = `
+            <div style="
+                grid-column: 1 / -1;
+                text-align: center;
+                padding: 50px;
+                color: #dc2626;
+            ">
+
+                <h3>
+                    Unable to load destinations
+                </h3>
+
+                <p style="margin-top:10px;">
+                    Please make sure the Spring Boot
+                    server is running.
+                </p>
+
+                <p style="margin-top:5px;">
+                    ${error.message}
+                </p>
+
+            </div>
+        `;
+
+                resultCount.textContent =
+                    "Unable to load destinations";
+
+            }
+
+        }
+
+
+        /*
+         * ============================================
+         * LOAD STATES
+         * ============================================
+         */
+
+        function loadStates() {
+
+            stateFilter.innerHTML = `
+        <option value="all">
+            All States
+        </option>
+    `;
+
+
+            states.forEach(state => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = state.id;
+
+                option.textContent = state.name;
+
+                stateFilter.appendChild(option);
+
+            });
+
+        }
+
+
+        /*
+         * ============================================
+         * LOAD CITIES
+         * ============================================
+         */
+
+        function loadCities(stateId = "all") {
+
+            cityFilter.innerHTML = `
+        <option value="all">
+            All Cities
+        </option>
+    `;
+
+
+            let filteredCities = cities;
+
+
+            /*
+             * If a state is selected,
+             * only show cities belonging
+             * to that state.
+             */
+
+            if (stateId !== "all") {
+
+                filteredCities =
+                    cities.filter(
+                        city =>
+                            city.stateId ===
+                            Number(stateId)
+                    );
+
+            }
+
+
+            filteredCities.forEach(city => {
+
+                const option =
+                    document.createElement("option");
+
+                option.value = city.id;
+
+                option.textContent = city.name;
+
+                cityFilter.appendChild(option);
+
+            });
+
+        }
+
+
+        /*
+         * ============================================
+         * GET DESTINATION ICON
+         * ============================================
+         */
+
+        function getDestinationIcon(name) {
+
+            const lowerName =
+                name.toLowerCase();
+
+
+            if (
+                lowerName.includes("fort") ||
+                lowerName.includes("palace")
+            ) {
+
+                return "🏰";
+
+            }
+
+
+            if (
+                lowerName.includes("temple") ||
+                lowerName.includes("ghat")
+            ) {
+
+                return "🛕";
+
+            }
+
+
+            if (
+                lowerName.includes("lake")
+            ) {
+
+                return "🏞️";
+
+            }
+
+
+            if (
+                lowerName.includes("bagh") ||
+                lowerName.includes("garden")
+            ) {
+
+                return "🌳";
+
+            }
+
+
+            if (
+                lowerName.includes("taj")
+            ) {
+
+                return "🕌";
+
+            }
+
+
+            return "📍";
+
+        }
+
+
+        /*
+         * ============================================
+         * DISPLAY DESTINATIONS
+         * ============================================
+         */
+
+        function displayDestinations() {
+
+            const selectedState =
+                stateFilter.value;
+
+            const selectedCity =
+                cityFilter.value;
+
+            const searchText =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            let filteredPlaces =
+                touristPlaces;
+
+
+            /*
+             * ========================================
+             * FILTER BY STATE
+             * ========================================
+             */
+
+            if (selectedState !== "all") {
+
+                filteredPlaces =
+                    filteredPlaces.filter(
+                        place =>
+                            place.stateId ===
+                            Number(selectedState)
+                    );
+
+            }
+
+
+            /*
+             * ========================================
+             * FILTER BY CITY
+             * ========================================
+             */
+
+            if (selectedCity !== "all") {
+
+                filteredPlaces =
+                    filteredPlaces.filter(
+                        place =>
+                            place.cityId ===
+                            Number(selectedCity)
+                    );
+
+            }
+
+
+            /*
+             * ========================================
+             * SEARCH
+             * ========================================
+             */
+
+            if (searchText !== "") {
+
+                filteredPlaces =
+                    filteredPlaces.filter(place => {
+
+                        return (
+
+                            place.name
+                                .toLowerCase()
+                                .includes(searchText)
+
+                            ||
+
+                            place.description
+                                .toLowerCase()
+                                .includes(searchText)
+
+                            ||
+
+                            place.cityName
+                                .toLowerCase()
+                                .includes(searchText)
+
+                            ||
+
+                            place.stateName
+                                .toLowerCase()
+                                .includes(searchText)
+
+                        );
+
+                    });
+
+            }
+
+
+            /*
+             * ========================================
+             * UPDATE RESULT COUNT
+             * ========================================
+             */
+
+            resultCount.textContent =
+                `${filteredPlaces.length} destination${filteredPlaces.length !== 1
+                    ? "s"
+                    : ""
+                }`;
+
+
+            /*
+             * ========================================
+             * EMPTY STATE
+             * ========================================
+             */
+
+            if (filteredPlaces.length === 0) {
+
+                destinationGrid.innerHTML = "";
+
+                emptyState.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            emptyState.style.display =
+                "none";
+
+
+            /*
+             * ========================================
+             * CREATE DESTINATION CARDS
+             * ========================================
+             */
+
+            destinationGrid.innerHTML =
+                filteredPlaces
+                    .map(place => {
+
+                        return `
+
+                    <div class="destination-card">
+
+                        <div class="card-image">
+
+                            ${getDestinationIcon(
+                            place.name
+                        )}
+
+                        </div>
+
+
+                        <div class="card-content">
+
+                            <h3>
+                                ${escapeHtml(
+                            place.name
+                        )}
+                            </h3>
+
+
+                            <div class="location">
+
+                                📍
+
+                                ${escapeHtml(
+                            place.cityName
+                        )},
+
+                                ${escapeHtml(
+                            place.stateName
+                        )}
+
+                            </div>
+
+
+                            <p class="description">
+
+                                ${escapeHtml(
+                            place.description
+                        )}
+
+                            </p>
+
+
+                            <button
+                                class="explore-button"
+                                onclick="openDestination(
+                                    ${place.id}
+                                )">
+
+                                Explore Destination
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+                    })
+                    .join("");
+
+        }
+
+
+        /*
+         * ============================================
+         * OPEN DESTINATION MODAL
+         * ============================================
+         */
+
+        function openDestination(id) {
+
+            const place =
+                touristPlaces.find(
+                    item => item.id === id
+                );
+
+
+            if (!place) {
+                return;
+            }
+
+
+            modalTitle.textContent =
+                place.name;
+
+
+            modalLocation.textContent =
+                `📍 ${place.cityName}, ${place.stateName}`;
+
+
+            modalDescription.textContent =
+                place.description;
+
+
+            modal.classList.add("active");
+
+        }
+
+
+        /*
+         * ============================================
+         * CLOSE MODAL
+         * ============================================
+         */
+
+        closeModal.addEventListener(
+            "click",
+            () => {
+
+                modal.classList.remove("active");
+
+            }
+        );
+
+
+        /*
+         * ============================================
+         * CLOSE MODAL WHEN CLICKING OUTSIDE
+         * ============================================
+         */
+
+        modal.addEventListener(
+            "click",
+            event => {
+
+                if (event.target === modal) {
+
+                    modal.classList.remove("active");
+
+                }
+
+            }
+        );
+
+
+        /*
+         * ============================================
+         * STATE CHANGE
+         * ============================================
+         */
+
+        stateFilter.addEventListener(
+            "change",
+            () => {
+
+                /*
+                 * Reset city when state changes
+                 */
+
+                loadCities(
+                    stateFilter.value
+                );
+
+
+                /*
+                 * Apply filters
+                 */
+
+                displayDestinations();
+
+            }
+        );
+
+
+        /*
+         * ============================================
+         * CITY CHANGE
+         * ============================================
+         */
+
+        cityFilter.addEventListener(
+            "change",
+            displayDestinations
+        );
+
+
+        /*
+         * ============================================
+         * SEARCH
+         * ============================================
+         */
+
+        searchInput.addEventListener(
+            "input",
+            displayDestinations
+        );
+
+
+        /*
+         * ============================================
+         * HTML ESCAPE
+         * ============================================
+         */
+
+        function escapeHtml(value) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent =
+                value ?? "";
+
+            return div.innerHTML;
+
+        }
+
+
+        /*
+         * ============================================
+         * START APPLICATION
+         * ============================================
+         */
+
+        loadData();
+
+
+    </script>
+
+</body>
+
+</html>
