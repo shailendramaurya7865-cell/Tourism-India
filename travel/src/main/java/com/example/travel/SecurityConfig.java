@@ -33,7 +33,7 @@ public class SecurityConfig {
                                 "/api/cities",
                                 "/api/tourist-places",
                                 "/api/categories",
-                                "/api/tourist-places/featured"
+                                "/api/tourist-places/*"
                         ).permitAll()
 
                         // Everything else requires authentication

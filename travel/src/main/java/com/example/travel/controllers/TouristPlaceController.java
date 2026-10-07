@@ -2,6 +2,7 @@ package com.example.travel.controllers;
 
 import com.example.travel.api.ApiResponse;
 import com.example.travel.dto.response.FeaturedTouristPlaceDto;
+import com.example.travel.dto.response.TouristPlaceDetailDto;
 import com.example.travel.dto.response.TouristPlaceDto;
 import com.example.travel.services.TouristPlaceService;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,8 @@ public class TouristPlaceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<TouristPlaceDto>> getTouristPlace(@PathVariable Long id) {
-        return ResponseEntity.ok(ApiResponse.success(service.getTouristPlace(id)));
+    public ResponseEntity<ApiResponse<TouristPlaceDetailDto>> getTouristPlaceDetail(@PathVariable Long id) {
+        return ResponseEntity.ok(ApiResponse.success(service.getTouristPlaceDetail(id)));
     }
 
     @GetMapping("/featured")

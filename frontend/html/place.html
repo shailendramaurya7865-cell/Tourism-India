@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Place Details | Tourism India</title>
+
+    <link rel="stylesheet" href="css/places.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="index.html" class="logo">
+            Tourism India
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="places.html">
+                Explore
+            </a>
+
+            <a href="#">
+                Stories
+            </a>
+
+            <a href="#">
+                Map
+            </a>
+
+            <a href="#">
+                About
+            </a>
+
+        </nav>
+
+        <button class="login-btn">
+            Login
+        </button>
+
+    </header>
+
+
+    <!-- ================= LOADING ================= -->
+
+    <div id="loading" class="loading">
+
+        <div class="loading-spinner"></div>
+
+        <p>
+            Loading place details...
+        </p>
+
+    </div>
+
+
+    <!-- ================= ERROR ================= -->
+
+    <div
+        id="error"
+        class="error-state"
+        style="display: none;"
+    >
+
+        <h2>
+            Unable to load place
+        </h2>
+
+        <p id="errorMessage">
+            Something went wrong while loading this place.
+        </p>
+
+        <a href="places.html" class="back-button">
+            Back to Explore
+        </a>
+
+    </div>
+
+
+    <!-- ================= PLACE CONTENT ================= -->
+
+    <main
+        id="placeContent"
+        style="display: none;"
+    >
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <img
+                id="heroImage"
+                src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=1600"
+                alt="Tourist place"
+            >
+
+            <div class="hero-overlay">
+
+                <div class="hero-content">
+
+                    <p
+                        id="breadcrumb"
+                        class="breadcrumb"
+                    ></p>
+
+                    <h1 id="placeName">
+                    </h1>
+
+                    <p
+                        id="placeLocation"
+                        class="place-location"
+                    ></p>
+
+                    <div
+                        id="placeRating"
+                        class="rating"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content-wrapper">
+
+
+            <!-- ================= MAIN CONTENT ================= -->
+
+            <div class="main-content">
+
+
+                <!-- ABOUT -->
+
+                <div class="card">
+
+                    <h2 id="aboutTitle">
+                        About This Place
+                    </h2>
+
+                    <p id="description">
+                    </p>
+
+                    <p
+                        id="shortDescription"
+                        class="short-description"
+                    >
+                    </p>
+
+                </div>
+
+
+                <!-- CATEGORIES -->
+
+                <div
+                    id="categoriesCard"
+                    class="card"
+                >
+
+                    <h2>
+                        Categories
+                    </h2>
+
+                    <div
+                        id="categories"
+                        class="categories"
+                    >
+                    </div>
+
+                </div>
+
+
+                <!-- LOCATION -->
+
+                <div class="card">
+
+                    <h2>
+                        Location
+                    </h2>
+
+                    <p
+                        id="address"
+                        class="address"
+                    >
+                    </p>
+
+                    <p
+                        id="coordinates"
+                        class="coordinates"
+                    >
+                    </p>
+
+
+                    <!-- MAP -->
+
+                    <div
+                        id="mapContainer"
+                        class="map-container"
+                    >
+
+                        <iframe
+                            id="mapFrame"
+                            title="Location map"
+                            width="100%"
+                            height="350"
+                            loading="lazy"
+                            style="border: 0;"
+                            allowfullscreen
+                        >
+                        </iframe>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- ================= SIDEBAR ================= -->
+
+            <aside class="sidebar">
+
+
+                <!-- QUICK INFORMATION -->
+
+                <div class="info-card">
+
+                    <h3>
+                        Quick Information
+                    </h3>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            State
+                        </span>
+
+                        <strong id="state">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            City
+                        </span>
+
+                        <strong id="city">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Opening
+                        </span>
+
+                        <strong id="openTime">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Closing
+                        </span>
+
+                        <strong id="closeTime">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Closed Days
+                        </span>
+
+                        <strong id="closedDays">
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span>
+                            Entry Fee
+                        </span>
+
+                        <strong id="entryFee">
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RATING -->
+
+                <div
+                    id="ratingCard"
+                    class="info-card"
+                >
+
+                    <h3>
+                        Ratings
+                    </h3>
+
+                    <div
+                        id="ratingAvg"
+                        class="big-rating"
+                    >
+                    </div>
+
+                    <p id="reviewCount">
+                    </p>
+
+                </div>
+
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Make sure api.js is loaded before places.js -->
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/places.js"></script>
+
+</body>
+
+</html>

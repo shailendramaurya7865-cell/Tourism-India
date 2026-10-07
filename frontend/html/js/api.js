@@ -110,3 +110,21 @@ async function getTrendingStories() {
 
     return data;
 }
+
+async function getPlaceById(placeId) {
+
+    console.log(
+        "[PLACE API] Loading place:",
+        placeId
+    );
+
+    const data =
+        await get(`/tourist-places/${placeId}`);
+
+    console.log(
+        "[PLACE API] Place received:",
+        data
+    );
+
+    return data;
+}

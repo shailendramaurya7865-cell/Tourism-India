@@ -1,6 +1,7 @@
 package com.example.travel.services;
 
 import com.example.travel.dto.response.FeaturedTouristPlaceDto;
+import com.example.travel.dto.response.TouristPlaceDetailDto;
 import com.example.travel.dto.response.TouristPlaceDto;
 import com.example.travel.entities.TouristPlace;
 import com.example.travel.exception.ResourceNotFoundException;
@@ -25,9 +26,9 @@ public class TouristPlaceService {
         return repository.findAll().stream().map(mapper::mapToResponseTourist).toList();
     }
 
-    public TouristPlaceDto getTouristPlace(Long id) {
+    public TouristPlaceDetailDto getTouristPlaceDetail(Long id) {
         TouristPlace place = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Tourist place with id " + id + " not found"));
-        return mapper.mapToResponseTourist(place);
+        return mapper.mapToResponseTouristDetail(place);
     }
 
     public List<FeaturedTouristPlaceDto> getFeaturedTouristPlace() {
