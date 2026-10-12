@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore Cities | Tourism India</title>
+
+    <meta name="description"
+          content="Explore the cities of India and discover their tourist destinations.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/cities.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container navbar-inner">
+
+        <a href="home.html" class="brand">
+            <span class="brand-mark">🪷</span>
+            <span>Tourism India</span>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="home.html">Home</a>
+            <a href="states.html">States</a>
+            <a href="cities.html" class="active">Cities</a>
+        </nav>
+
+        <a href="home.html" class="back-link">← Home</a>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- =====================================================
+         PAGE HERO
+    ====================================================== -->
+
+    <section class="page-hero">
+
+        <div class="container">
+
+            <p class="eyebrow">
+                EXPLORE INCREDIBLE INDIA
+            </p>
+
+            <h1>
+                Discover the Cities of India
+            </h1>
+
+            <p class="page-description">
+                Explore India's vibrant cities, discover their culture,
+                heritage, attractions and unforgettable experiences.
+            </p>
+
+
+            <!-- SEARCH -->
+
+            <div class="city-search">
+
+                <span aria-hidden="true">⌕</span>
+
+                <input
+                    type="search"
+                    id="citySearch"
+                    placeholder="Search cities..."
+                    aria-label="Search cities"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CITIES SECTION
+    ====================================================== -->
+
+    <section class="cities-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-kicker">
+                        FIND YOUR NEXT DESTINATION
+                    </p>
+
+                    <h2>
+                        Explore All Cities
+                    </h2>
+
+                </div>
+
+                <p id="cityCount" class="city-count">
+                    Loading cities...
+                </p>
+
+            </div>
+
+
+            <!-- STATE FILTER -->
+
+            <div class="city-filters">
+
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-state-id="all">
+                    All Cities
+                </button>
+
+                <div class="state-filter-wrapper">
+
+                    <label for="stateFilter">
+                        Explore by state
+                    </label>
+
+                    <select id="stateFilter">
+
+                        <option value="all">
+                            All States
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="citiesMessage"
+                class="cities-message"
+                role="status">
+
+                Loading cities...
+
+            </div>
+
+
+            <!-- CITY GRID -->
+
+            <div
+                id="citiesGrid"
+                class="cities-grid">
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-inner">
+
+        <a href="home.html" class="brand footer-brand">
+
+            <span class="brand-mark">🪷</span>
+
+            <span>
+                Tourism India
+            </span>
+
+        </a>
+
+        <p>
+            Made for discovering India.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<script src="/js/cities.js"></script>
+
+</body>
+</html>

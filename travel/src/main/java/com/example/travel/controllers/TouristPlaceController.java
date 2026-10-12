@@ -3,7 +3,7 @@ package com.example.travel.controllers;
 import com.example.travel.api.ApiResponse;
 import com.example.travel.dto.response.FeaturedTouristPlaceDto;
 import com.example.travel.dto.response.TouristPlaceDetailDto;
-import com.example.travel.dto.response.TouristPlaceDto;
+import com.example.travel.dto.response.TouristPlaceResponse;
 import com.example.travel.services.TouristPlaceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class TouristPlaceController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<TouristPlaceDto>>> getAllTouristPlaces() {
+    public ResponseEntity<ApiResponse<List<TouristPlaceResponse>>> getAllTouristPlaces() {
         return ResponseEntity.ok(ApiResponse.success("Tourist places retrieved successfully", service.getAllTouristPlaces()));
     }
 

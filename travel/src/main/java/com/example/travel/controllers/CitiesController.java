@@ -1,13 +1,11 @@
 package com.example.travel.controllers;
 
 import com.example.travel.api.ApiResponse;
+import com.example.travel.dto.response.CityDetailResponse;
 import com.example.travel.dto.response.CityDto;
 import com.example.travel.services.CitiesService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +25,11 @@ public class CitiesController {
         List<CityDto> respCities = cityService.getAllCities();
         ApiResponse<List<CityDto>> response = ApiResponse.success("Cities loaded successfully", respCities);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{cityId}")
+    public ResponseEntity<ApiResponse<CityDetailResponse>> getCityDetail(@PathVariable Long cityId) {
+        return ResponseEntity.ok(ApiResponse.success(cityService.getCityDetail(cityId)));
+
     }
 }

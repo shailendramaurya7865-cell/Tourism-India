@@ -1,0 +1,820 @@
+/* =========================================================
+   TOURISM INDIA — STATE DETAIL PAGE
+   ========================================================= */
+
+:root {
+    --state-navy: #102a43;
+    --state-navy-dark: #0b1f33;
+    --state-teal: #167d7f;
+    --state-teal-light: #e8f4f3;
+    --state-saffron: #e88b32;
+    --state-cream: #faf7f2;
+    --state-text: #263238;
+    --state-muted: #6b7280;
+    --state-border: #e7e5e0;
+    --state-white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: min(1180px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+.section-label,
+.eyebrow {
+    display: inline-block;
+    margin-bottom: 13px;
+    color: var(--state-saffron);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading {
+    max-width: 720px;
+    margin-bottom: 35px;
+}
+
+.section-heading h2,
+.about-state-content h2 {
+    margin: 0 0 14px;
+    color: var(--state-navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(30px, 4vw, 44px);
+    line-height: 1.2;
+}
+
+.section-heading h2 span {
+    color: var(--state-teal);
+}
+
+.section-heading p {
+    margin: 0;
+    color: var(--state-muted);
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.section-heading-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    max-width: none;
+}
+
+.section-heading-row > div {
+    max-width: 720px;
+}
+
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    padding-bottom: 5px;
+    color: var(--state-teal);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+
+.view-all-link:hover {
+    gap: 14px;
+}
+
+.loading-state {
+    grid-column: 1 / -1;
+    padding: 35px 15px;
+    color: var(--state-muted);
+    text-align: center;
+}
+
+
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.breadcrumb-section {
+    background: var(--state-cream);
+    border-bottom: 1px solid var(--state-border);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    min-height: 54px;
+    color: var(--state-muted);
+    font-size: 13px;
+}
+
+.breadcrumb a {
+    color: var(--state-teal);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   STATE HERO
+   ========================================================= */
+
+.state-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 470px;
+    overflow: hidden;
+
+    background-color: var(--state-navy);
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(8, 29, 46, 0.90) 0%,
+            rgba(8, 29, 46, 0.64) 50%,
+            rgba(8, 29, 46, 0.16) 100%
+        ),
+        url("../images/state-default.jpg");
+
+    background-position: center;
+    background-size: cover;
+}
+
+.state-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        0deg,
+        rgba(8, 29, 46, 0.30),
+        transparent 50%
+    );
+    pointer-events: none;
+}
+
+.state-hero-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    color: var(--state-white);
+}
+
+.state-hero h1 {
+    max-width: 850px;
+    margin: 0 0 20px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 1.06;
+}
+
+.state-hero p {
+    max-width: 650px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.91);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   ABOUT STATE
+   ========================================================= */
+
+.about-state-section {
+    padding: 75px 0;
+    background: var(--state-white);
+}
+
+.about-state-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(260px, 0.8fr);
+    align-items: center;
+    gap: 65px;
+}
+
+.about-state-content h2 {
+    margin-bottom: 20px;
+}
+
+.about-state-content p {
+    margin: 0;
+    color: var(--state-muted);
+    font-size: 16px;
+    line-height: 1.95;
+    white-space: pre-line;
+}
+
+.about-state-highlight {
+    padding: 30px;
+    border: 1px solid var(--state-border);
+    border-radius: 18px;
+    background: var(--state-cream);
+}
+
+.highlight-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: var(--state-teal-light);
+    color: var(--state-teal);
+    font-size: 25px;
+}
+
+.about-state-highlight h3 {
+    margin: 0 0 12px;
+    color: var(--state-navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 23px;
+}
+
+.about-state-highlight p {
+    margin: 0;
+    color: var(--state-muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   POPULAR CITIES — HORIZONTAL ROW
+   ========================================================= */
+
+.cities-section {
+    padding: 80px 0;
+    background: var(--state-cream);
+}
+
+.cities-grid {
+    display: grid;
+    grid-auto-columns: minmax(260px, 1fr);
+    grid-auto-flow: column;
+    grid-template-columns: none;
+    gap: 22px;
+
+    overflow-x: auto;
+    padding: 3px 3px 18px;
+
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: var(--state-teal) #e8e4dc;
+}
+
+.city-card {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 255px;
+    overflow: hidden;
+    padding: 25px;
+    border-radius: 17px;
+
+    color: var(--state-white);
+    text-decoration: none;
+
+    background-color: var(--state-teal);
+    background-image:
+        linear-gradient(
+            0deg,
+            rgba(8, 29, 46, 0.92),
+            rgba(8, 29, 46, 0.02) 90%
+        ),
+        var(--city-image, linear-gradient(
+            135deg,
+            #167d7f,
+            #102a43
+        ));
+
+    background-position: center;
+    background-size: cover;
+
+    scroll-snap-align: start;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(16, 42, 67, 0.18);
+}
+
+.city-card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.city-card-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #ffc078;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.city-card h3 {
+    margin: 0;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 29px;
+}
+
+
+/* =========================================================
+   TOP TOURIST PLACES
+   ========================================================= */
+
+.places-section {
+    padding: 85px 0;
+    background: var(--state-white);
+}
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+}
+
+.place-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--state-border);
+    border-radius: 16px;
+    background: var(--state-white);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(16, 42, 67, 0.11);
+}
+
+.place-card-image {
+    height: 215px;
+    background-color: var(--state-teal-light);
+    background-image: linear-gradient(
+        135deg,
+        var(--state-teal),
+        var(--state-navy)
+    );
+    background-position: center;
+    background-size: cover;
+}
+
+.place-card-body {
+    padding: 23px;
+}
+
+.place-card-city {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: var(--state-teal);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.place-card h3 {
+    margin: 0 0 11px;
+    color: var(--state-navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 23px;
+    line-height: 1.35;
+}
+
+.place-card p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0;
+    color: var(--state-muted);
+    font-size: 14px;
+    line-height: 1.75;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+.place-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 17px;
+}
+
+.place-category {
+    padding: 6px 10px;
+    border-radius: 30px;
+    background: var(--state-teal-light);
+    color: var(--state-teal);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   CATEGORIES
+   ========================================================= */
+
+.categories-section {
+    padding: 85px 0;
+    background: var(--state-cream);
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.category-card {
+    min-width: 0;
+    padding: 27px 20px;
+    border: 1px solid var(--state-border);
+    border-radius: 15px;
+    background: var(--state-white);
+    text-align: center;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--state-teal);
+    box-shadow: 0 10px 25px rgba(16, 42, 67, 0.06);
+}
+
+.category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: var(--state-teal-light);
+    font-size: 23px;
+}
+
+.category-card h3 {
+    margin: 0;
+    color: var(--state-navy);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   MAP PREVIEW
+   ========================================================= */
+
+.state-map-section {
+    padding: 85px 0;
+    background: var(--state-white);
+}
+
+.state-map-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(270px, 0.8fr);
+    overflow: hidden;
+    border: 1px solid var(--state-border);
+    border-radius: 20px;
+    background: var(--state-white);
+    box-shadow: 0 12px 35px rgba(16, 42, 67, 0.06);
+}
+
+.map-preview {
+    position: relative;
+    min-height: 390px;
+    overflow: hidden;
+
+    background-color: #e9efe5;
+    background-image:
+        linear-gradient(
+            28deg,
+            transparent 46%,
+            rgba(255, 255, 255, 0.7) 47%,
+            rgba(255, 255, 255, 0.7) 49%,
+            transparent 50%
+        ),
+        linear-gradient(
+            115deg,
+            transparent 44%,
+            rgba(255, 255, 255, 0.75) 45%,
+            rgba(255, 255, 255, 0.75) 47%,
+            transparent 48%
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 48px,
+            rgba(117, 151, 119, 0.13) 49px 50px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 48px,
+            rgba(117, 151, 119, 0.13) 49px 50px
+        );
+}
+
+.map-water {
+    position: absolute;
+    top: -30px;
+    right: -65px;
+    width: 180px;
+    height: 520px;
+    border-radius: 50%;
+    background: rgba(126, 190, 204, 0.28);
+    transform: rotate(25deg);
+}
+
+.map-road {
+    position: absolute;
+    height: 9px;
+    border: 2px solid rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    background: #e7cda2;
+}
+
+.map-road-one {
+    top: 28%;
+    left: -10%;
+    width: 125%;
+    transform: rotate(19deg);
+}
+
+.map-road-two {
+    top: 55%;
+    left: -15%;
+    width: 130%;
+    transform: rotate(-26deg);
+}
+
+.map-road-three {
+    top: 15%;
+    left: 45%;
+    width: 100%;
+    transform: rotate(72deg);
+}
+
+.map-label {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid rgba(16, 42, 67, 0.08);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--state-navy);
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(16, 42, 67, 0.08);
+}
+
+.map-label span:first-child {
+    color: var(--state-teal);
+}
+
+.map-label-one {
+    top: 24%;
+    left: 12%;
+}
+
+.map-label-two {
+    right: 9%;
+    bottom: 22%;
+}
+
+.map-center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    min-width: 165px;
+    padding: 17px 20px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.96);
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(16, 42, 67, 0.13);
+    transform: translate(-50%, -50%);
+}
+
+.map-pin {
+    color: var(--state-teal);
+    font-size: 31px;
+}
+
+.map-center-label h3 {
+    margin: 5px 0;
+    color: var(--state-navy);
+    font-size: 15px;
+}
+
+.map-center-label p {
+    margin: 0;
+    color: var(--state-muted);
+    font-size: 12px;
+}
+
+.map-compass {
+    position: absolute;
+    top: 17px;
+    right: 18px;
+    color: var(--state-navy);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.map-attribution {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    color: #59675a;
+    font-size: 10px;
+}
+
+.map-information {
+    align-self: center;
+    padding: 35px;
+}
+
+.map-information h3 {
+    margin: 0 0 15px;
+    color: var(--state-navy);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 27px;
+    line-height: 1.35;
+}
+
+.map-information p {
+    margin: 0 0 24px;
+    color: var(--state-muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.map-action-link {
+    display: inline-block;
+    color: var(--state-teal);
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.map-action-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   EMPTY STATES
+   ========================================================= */
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 40px 20px;
+    border: 1px dashed var(--state-border);
+    border-radius: 14px;
+    color: var(--state-muted);
+    text-align: center;
+}
+
+.empty-state p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .about-state-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .places-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .state-map-card {
+        grid-template-columns: 1fr;
+    }
+
+    .map-preview {
+        min-height: 350px;
+    }
+
+    .map-information {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 28px);
+    }
+
+    .state-hero {
+        min-height: 380px;
+    }
+
+    .state-hero-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    .state-hero h1 {
+        font-size: 46px;
+    }
+
+    .state-hero p {
+        font-size: 15px;
+    }
+
+    .about-state-section,
+    .cities-section,
+    .places-section,
+    .categories-section,
+    .state-map-section {
+        padding: 60px 0;
+    }
+
+    .section-heading-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .section-heading {
+        margin-bottom: 26px;
+    }
+
+    .cities-grid {
+        grid-auto-columns: minmax(245px, 82%);
+        gap: 15px;
+    }
+
+    .city-card {
+        min-height: 215px;
+    }
+
+    .places-grid,
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .place-card-image {
+        height: 205px;
+    }
+
+    .about-state-highlight {
+        padding: 24px;
+    }
+
+    .map-preview {
+        min-height: 310px;
+    }
+
+    .map-information {
+        padding: 25px;
+    }
+
+    .map-information h3 {
+        font-size: 24px;
+    }
+
+    .map-label {
+        max-width: 150px;
+        font-size: 10px;
+    }
+}

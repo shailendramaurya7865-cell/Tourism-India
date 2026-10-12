@@ -6,6 +6,8 @@ import com.example.travel.entities.City;
 import com.example.travel.entities.State;
 import com.example.travel.entities.TouristPlace;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ObjectMapper;
 
 import java.util.List;
 import java.util.Set;
@@ -27,6 +29,35 @@ public class TravelMapper {
         );
     }
 
+    public PlaceDto mapPlaceDto(TouristPlace place) {
+
+        RatingDto rating = new RatingDto(
+                place.getAverageRating(),
+                place.getReviewCount()
+        );
+
+        String image = null;
+
+        if (place.getConfig() != null && !place.getConfig().isBlank()) {
+            try {
+                JsonNode config = new ObjectMapper().readTree(place.getConfig());
+
+                if (config.has("image")) {
+                    image = config.get("image").asText();
+                }
+
+            } catch (Exception ignored) {
+            }
+        }
+
+        return new PlaceDto(
+                place.getId(),
+                place.getName(),
+                image,
+                rating
+        );
+    }
+
     public CategoryDto mapCategoryDto(Category category) {
         return new CategoryDto(
                 category.getId(),
@@ -34,7 +65,7 @@ public class TravelMapper {
         );
     }
 
-    public TouristPlaceDto mapToResponseTourist(TouristPlace place) {
+    public TouristPlaceResponse mapToResponseTourist(TouristPlace place) {
 
         City city = place.getCity();
         State state = city.getState();
@@ -43,7 +74,7 @@ public class TravelMapper {
                 .stream()
                 .map(this::mapCategoryDto)
                 .collect(Collectors.toSet());
-        return new TouristPlaceDto(place.getId(),
+        return new TouristPlaceResponse(place.getId(),
                 place.getName(),
                 place.getShortDescription(),
                 mapCityDto(city),

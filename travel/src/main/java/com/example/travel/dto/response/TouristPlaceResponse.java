@@ -2,7 +2,7 @@ package com.example.travel.dto.response;
 
 import java.util.Set;
 
-public record TouristPlaceDto(
+public record TouristPlaceResponse(
         Long id,
         String name,
         String shortDescription,

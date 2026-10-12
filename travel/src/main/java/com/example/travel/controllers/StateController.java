@@ -1,6 +1,7 @@
 package com.example.travel.controllers;
 
 import com.example.travel.api.ApiResponse;
+import com.example.travel.dto.response.StateDetailResponse;
 import com.example.travel.dto.response.StateDto;
 import com.example.travel.services.StateService;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +24,16 @@ public class StateController {
     public ResponseEntity<ApiResponse<List<StateDto>>> getAllStates() {
         List<StateDto> allStates = stateService.getAllStates();
         ApiResponse<List<StateDto>> apiStates = ApiResponse.success("States loaded successfully", allStates);
-        ResponseEntity<ApiResponse<List<StateDto>>> ok = ResponseEntity.ok(apiStates);
-        System.out.println("ok = " + ok);
-        return ok;
+        return ResponseEntity.ok(apiStates);
     }
 
+//    @GetMapping("/{stateId}")
+//    public ResponseEntity<ApiResponse<StateDto>> getState(@PathVariable Long stateId) {
+//        return ResponseEntity.ok(ApiResponse.success(stateService.getState(stateId)));
+//    }
+
     @GetMapping("/{stateId}")
-    public ResponseEntity<ApiResponse<StateDto>> getState(@PathVariable Long stateId) {
-        return ResponseEntity.ok(ApiResponse.success(stateService.getState(stateId)));
+    public ResponseEntity<ApiResponse<StateDetailResponse>> getStateDetail(@PathVariable Long stateId) {
+        return ResponseEntity.ok(ApiResponse.success(stateService.getStateDetails(stateId)));
     }
 }

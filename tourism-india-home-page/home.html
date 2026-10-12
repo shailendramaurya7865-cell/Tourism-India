@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tourism India | Explore Incredible India</title>
+
+    <meta name="description"
+          content="Discover India's states, cities, tourist places, culture and experiences.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+<header class="navbar">
+    <div class="container navbar-inner">
+
+        <a href="home.html" class="brand">
+            <span class="brand-mark">🪷</span>
+            <span>Tourism India</span>
+        </a>
+
+        <nav class="desktop-nav" aria-label="Main navigation">
+            <a href="#explore">Explore</a>
+            <a href="#plan">Plan</a>
+            <a href="#discover">Discover</a>
+        </nav>
+
+        <button class="nav-search-button" type="button" aria-label="Search">
+            <span>⌕</span>
+        </button>
+
+        <button class="mobile-menu-button" id="mobileMenuButton" type="button"
+                aria-label="Open menu" aria-expanded="false">
+            ☰
+        </button>
+    </div>
+
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#explore">Explore</a>
+        <a href="#plan">Plan</a>
+        <a href="#discover">Discover</a>
+    </div>
+</header>
+
+
+<main>
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+
+            <div class="hero-copy">
+                <p class="eyebrow">TRAVEL • EXPERIENCE • BELONG</p>
+
+                <h1>
+                    Discover<br>
+                    Incredible India
+                </h1>
+
+                <p class="hero-subtitle">
+                    Explore places, cities and experiences that make India unforgettable.
+                </p>
+            </div>
+
+            <div class="hero-search-wrapper">
+                <div class="hero-search">
+                    <span class="search-icon">⌕</span>
+
+                    <input
+                        id="destinationSearch"
+                        type="search"
+                        autocomplete="off"
+                        placeholder="Search state, city or tourist place..."
+                    >
+
+                    <button id="searchButton" type="button">
+                        Search
+                    </button>
+                </div>
+
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <div class="hero-actions">
+                <a href="#explore" class="btn btn-primary">
+                    Explore States
+                    <span>→</span>
+                </a>
+
+                <a href="#destinations" class="btn btn-outline-light">
+                    Explore Destinations
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         EXPLORE INDIA
+    ====================================================== -->
+    <section class="section section-white" id="explore">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">START EXPLORING</p>
+                    <h2>Explore India</h2>
+                </div>
+            </div>
+
+            <div class="explore-grid">
+
+                <a href="pages/states.html" class="explore-card">
+                    <div class="explore-icon icon-green">⌖</div>
+                    <div>
+                        <h3>States</h3>
+                        <p>Explore India state by state</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="pages/cities.html" class="explore-card">
+                    <div class="explore-icon icon-blue">▦</div>
+                    <div>
+                        <h3>Cities</h3>
+                        <p>Discover cities and urban gems</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+                <a href="#destinations" class="explore-card">
+                    <div class="explore-icon icon-orange">●</div>
+                    <div>
+                        <h3>Tourist Places</h3>
+                        <p>Find amazing places to visit</p>
+                    </div>
+                    <span class="card-arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         POPULAR DESTINATIONS
+    ====================================================== -->
+    <section class="section section-soft" id="destinations">
+        <div class="container">
+
+            <div class="section-heading section-heading-row">
+                <div>
+                    <p class="section-kicker">INSPIRATION</p>
+                    <h2>Popular Destinations</h2>
+                </div>
+
+                <a href="#destinations" class="view-all">
+                    View All <span>→</span>
+                </a>
+            </div>
+
+            <div class="destination-grid" id="popularDestinations">
+                <!-- Rendered by home.js -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         FEATURED DESTINATION
+    ====================================================== -->
+    <section class="section section-white" id="discover">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">FEATURED</p>
+                    <h2>Featured Destination</h2>
+                </div>
+            </div>
+
+            <article class="featured-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1595815771614-ade9d652a65d?auto=format&fit=crop&w=1600&q=85"
+                    alt="Beautiful Himalayan landscape"
+                    loading="lazy"
+                >
+
+                <div class="featured-overlay"></div>
+
+                <div class="featured-content">
+                    <span class="featured-label">EXPERIENCE INDIA</span>
+
+                    <h3>Mountains • Lakes • Culture • Adventure</h3>
+
+                    <p>
+                        Discover breathtaking landscapes, peaceful valleys
+                        and unforgettable experiences.
+                    </p>
+
+                    <a href="#destinations" class="btn btn-primary">
+                        Explore Destinations <span>→</span>
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         EXPLORE BY CATEGORY
+    ====================================================== -->
+    <section class="section section-soft" id="plan">
+        <div class="container">
+
+            <div class="section-heading section-heading-row">
+                <div>
+                    <p class="section-kicker">FIND YOUR EXPERIENCE</p>
+                    <h2>Explore by Category</h2>
+                </div>
+
+                <a href="#categories" class="view-all">
+                    All Categories <span>→</span>
+                </a>
+            </div>
+
+            <div class="category-grid" id="categoryGrid">
+                <!-- Rendered by home.js -->
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         WHY TOURISM INDIA
+    ====================================================== -->
+    <section class="section section-white">
+        <div class="container">
+
+            <div class="why-layout">
+
+                <div class="why-copy">
+                    <p class="section-kicker">TRAVEL BETTER</p>
+                    <h2>Why Travel with Tourism India?</h2>
+
+                    <p class="why-description">
+                        Everything you need to discover destinations,
+                        understand places and plan memorable journeys.
+                    </p>
+                </div>
+
+                <div class="why-list">
+
+                    <div class="why-item">
+                        <span class="why-icon">✦</span>
+                        <div>
+                            <h3>Trusted Information</h3>
+                            <p>Accurate and useful destination guides.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-item">
+                        <span class="why-icon">▣</span>
+                        <div>
+                            <h3>Plan Your Trip</h3>
+                            <p>Helpful information for better travel planning.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-item">
+                        <span class="why-icon">⌖</span>
+                        <div>
+                            <h3>Explore Hidden Gems</h3>
+                            <p>Go beyond the usual tourist destinations.</p>
+                        </div>
+                    </div>
+
+                    <div class="why-item">
+                        <span class="why-icon">✺</span>
+                        <div>
+                            <h3>Incredible Experiences</h3>
+                            <p>Culture, history, adventure and more.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =====================================================
+         INSPIRATIONAL QUOTE
+    ====================================================== -->
+    <section class="quote-section">
+        <div class="container">
+
+            <div class="quote-card">
+                <img
+                    src="https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=1600&q=85"
+                    alt="Indian heritage architecture"
+                    loading="lazy"
+                >
+
+                <div class="quote-overlay"></div>
+
+                <div class="quote-content">
+                    <span class="quote-mark">“</span>
+                    <blockquote>
+                        Not just a place,<br>
+                        but a feeling.
+                    </blockquote>
+                    <p>Incredible India</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer class="footer">
+    <div class="container">
+
+        <div class="footer-top">
+
+            <a href="home.html" class="brand footer-brand">
+                <span class="brand-mark">🪷</span>
+                <span>Tourism India</span>
+            </a>
+
+            <div class="footer-links">
+                <a href="#explore">Explore</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#plan">Categories</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">f</a>
+                <a href="#" aria-label="Instagram">◎</a>
+                <a href="#" aria-label="YouTube">▶</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Tourism India. All rights reserved.</span>
+            <span>Made for discovering India.</span>
+        </div>
+
+    </div>
+</footer>
+
+
+<script src="js/home.js"></script>
+
+</body>
+</html>

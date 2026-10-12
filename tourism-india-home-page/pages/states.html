@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Explore States | Tourism India</title>
+
+    <meta name="description"
+          content="Explore the states of India and discover their tourist destinations.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/states.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="container navbar-inner">
+
+        <a href="home.html" class="brand">
+            <span class="brand-mark">🪷</span>
+            <span>Tourism India</span>
+        </a>
+
+        <nav class="desktop-nav">
+            <a href="home.html">Home</a>
+            <a href="states.html" class="active">States</a>
+        </nav>
+
+        <a href="home.html" class="back-link">← Home</a>
+
+    </div>
+</header>
+
+<main>
+
+    <section class="page-hero">
+        <div class="container">
+            <p class="eyebrow">EXPLORE INCREDIBLE INDIA</p>
+
+            <h1>Discover the States of India</h1>
+
+            <p class="page-description">
+                From the mountains of Himachal Pradesh to the beaches of Goa,
+                explore India's states and discover what makes each one unique.
+            </p>
+
+            <div class="state-search">
+                <span>⌕</span>
+
+                <input
+                    type="search"
+                    id="stateSearch"
+                    placeholder="Search states..."
+                    aria-label="Search states"
+                >
+            </div>
+        </div>
+    </section>
+
+    <section class="states-section">
+        <div class="container">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-kicker">FIND YOUR NEXT DESTINATION</p>
+                    <h2>Explore All States</h2>
+                </div>
+
+                <p id="stateCount" class="state-count">
+                    Loading states...
+                </p>
+            </div>
+
+            <div id="statesMessage" class="states-message" role="status">
+                Loading states...
+            </div>
+
+            <div id="statesGrid" class="states-grid"></div>
+
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <a href="home.html" class="brand footer-brand">
+            <span class="brand-mark">🪷</span>
+            <span>Tourism India</span>
+        </a>
+
+        <p>Made for discovering India.</p>
+    </div>
+</footer>
+
+<script src="/js/states.js"></script>
+
+</body>
+</html>

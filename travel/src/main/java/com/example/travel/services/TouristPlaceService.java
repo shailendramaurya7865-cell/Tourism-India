@@ -2,7 +2,7 @@ package com.example.travel.services;
 
 import com.example.travel.dto.response.FeaturedTouristPlaceDto;
 import com.example.travel.dto.response.TouristPlaceDetailDto;
-import com.example.travel.dto.response.TouristPlaceDto;
+import com.example.travel.dto.response.TouristPlaceResponse;
 import com.example.travel.entities.TouristPlace;
 import com.example.travel.exception.ResourceNotFoundException;
 import com.example.travel.mapper.TravelMapper;
@@ -22,7 +22,7 @@ public class TouristPlaceService {
         this.mapper = mapper;
     }
 
-    public List<TouristPlaceDto> getAllTouristPlaces() {
+    public List<TouristPlaceResponse> getAllTouristPlaces() {
         return repository.findAll().stream().map(mapper::mapToResponseTourist).toList();
     }
 

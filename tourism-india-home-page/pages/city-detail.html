@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>City Details | Tourism India</title>
+
+    <!-- Main Website CSS -->
+    <link rel="stylesheet" href="/css/home.css">
+
+    <!-- City Detail CSS -->
+    <link rel="stylesheet" href="/css/city-detail.css">
+</head>
+
+<body>
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <!-- Logo -->
+        <a href="/index.html" class="logo">
+            <span class="logo-icon">✦</span>
+            <span>Tourism India</span>
+        </a>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+
+            <a href="/index.html">
+                Home
+            </a>
+
+            <a href="/pages/states.html">
+                States
+            </a>
+
+            <a href="/pages/cities.html" class="active">
+                Cities
+            </a>
+
+            <a href="/pages/places.html">
+                Places
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+     ========================================================= -->
+
+<main>
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="city-hero" id="cityHero">
+
+        <!-- Background image is applied by city-detail.js -->
+
+        <div class="city-hero-overlay"></div>
+
+        <div class="container city-hero-content">
+
+            <!-- Breadcrumb -->
+            <div class="city-breadcrumb">
+
+                <a href="/index.html">
+                    Home
+                </a>
+
+                <span>/</span>
+
+                <a href="/pages/states.html" id="breadcrumbState">
+                    State
+                </a>
+
+                <span>/</span>
+
+                <span id="breadcrumbCity">
+                    City
+                </span>
+
+            </div>
+
+
+            <!-- Hero Information -->
+            <div class="city-hero-info">
+
+                <h1 id="cityName">
+                    Loading city...
+                </h1>
+
+                <div class="city-state" id="cityState">
+                    Loading state...
+                </div>
+
+                <!-- Rating -->
+                <div class="city-rating" id="cityRating">
+
+                    <span class="rating-star">
+                        ★
+                    </span>
+
+                    <span>
+                        Explore this destination
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+         ===================================================== -->
+
+    <div class="container city-detail-container">
+
+
+        <!-- =================================================
+             ABOUT CITY
+             ================================================= -->
+
+        <section class="city-section about-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    DISCOVER
+                </span>
+
+                <h2 id="aboutCityTitle">
+                    About the City
+                </h2>
+
+            </div>
+
+            <div class="about-content">
+
+                <p id="cityDescription">
+                    Discover the beauty, culture and experiences
+                    that make this city special.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             TOURIST PLACES
+             ================================================= -->
+
+        <section class="city-section tourist-places-section">
+
+            <div class="section-heading section-heading-row">
+
+                <div>
+
+                    <span class="section-eyebrow">
+                        EXPLORE
+                    </span>
+
+                    <h2>
+                        Top Tourist Places
+                    </h2>
+
+                </div>
+
+                <a
+                    href="#"
+                    id="viewAllPlaces"
+                    class="view-all-link"
+                >
+                    View All
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <!-- Places Grid -->
+
+            <div
+                id="placesGrid"
+                class="places-grid"
+            >
+
+                <!-- Loading state -->
+
+                <div class="city-loading">
+                    Loading tourist places...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             THINGS TO DO
+             ================================================= -->
+
+        <section class="city-section things-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    EXPERIENCES
+                </span>
+
+                <h2>
+                    Things to Do in
+                    <span id="thingsToDoCityName">
+                        the City
+                    </span>
+                </h2>
+
+            </div>
+
+
+            <!--
+                JS will populate this section from:
+                city.activities
+
+                If activities are empty/null,
+                city-detail.js will show default activities.
+            -->
+
+            <div
+                id="thingsToDo"
+                class="things-to-do"
+            >
+
+                <div class="city-loading">
+                    Loading experiences...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             BEST TIME TO VISIT
+             ================================================= -->
+
+        <section class="city-section best-time-section">
+
+            <div class="best-time-card">
+
+                <div class="best-time-icon">
+                    ☀
+                </div>
+
+                <div class="best-time-content">
+
+                    <span class="section-eyebrow">
+                        PLAN YOUR TRIP
+                    </span>
+
+                    <h2>
+                        Best Time to Visit
+                    </h2>
+
+                    <p id="bestTimeText">
+                        The best time to visit this city depends
+                        on the experiences you want to enjoy.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             WHERE IS THE CITY
+             ================================================= -->
+
+        <section class="city-section location-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    LOCATION
+                </span>
+
+                <h2>
+                    Where is
+                    <span id="mapCityName">
+                        the City
+                    </span>?
+                </h2>
+
+            </div>
+
+
+            <div class="location-layout">
+
+
+                <!-- -----------------------------------------
+                     LOCATION INFORMATION
+                     ----------------------------------------- -->
+
+                <div class="location-info">
+
+
+                    <div class="location-title-wrapper">
+
+                        <div class="location-icon">
+                            📍
+                        </div>
+
+                        <div>
+
+                            <h3 id="mapCityCenterName">
+                                City
+                            </h3>
+
+                            <span id="mapCityCenterState">
+                                State
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="location-description">
+
+                        <p id="locationDescription">
+                            Explore this beautiful destination
+                            and discover the attractions,
+                            culture and experiences around the city.
+                        </p>
+
+                    </div>
+
+
+                    <!-- Location details -->
+
+                    <div class="location-details">
+
+                        <div class="location-detail-item">
+
+                            <span class="detail-label">
+                                City
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="locationCity"
+                            >
+                                -
+                            </span>
+
+                        </div>
+
+
+                        <div class="location-detail-item">
+
+                            <span class="detail-label">
+                                State
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="locationState"
+                            >
+                                -
+                            </span>
+
+                        </div>
+
+
+                        <div class="location-detail-item">
+
+                            <span class="detail-label">
+                                Coordinates
+                            </span>
+
+                            <span
+                                class="detail-value"
+                                id="locationCoordinates"
+                            >
+                                -
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- -----------------------------------------
+                     MAP
+                     ----------------------------------------- -->
+
+                <div class="city-map-wrapper">
+
+                    <div
+                        id="cityMap"
+                        class="city-map"
+                    >
+
+                        <!--
+                            Current implementation can display
+                            a visual map placeholder.
+
+                            Later this can be replaced with:
+                            Google Maps
+                            MapLibre
+                            Leaflet
+                        -->
+
+                        <div class="map-placeholder">
+
+                            <div class="map-placeholder-icon">
+                                📍
+                            </div>
+
+                            <div class="map-placeholder-content">
+
+                                <strong id="mapStateLabel">
+                                    City Location
+                                </strong>
+
+                                <span>
+                                    Explore the location on the map
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             NEARBY PLACES
+             ================================================= -->
+
+        <section class="city-section nearby-section">
+
+            <div class="section-heading">
+
+                <span class="section-eyebrow">
+                    EXPLORE MORE
+                </span>
+
+                <h2>
+                    Nearby Places
+                </h2>
+
+            </div>
+
+
+            <div
+                id="nearbyPlaces"
+                class="nearby-places"
+            >
+
+                <!--
+                    JS will populate nearby places.
+
+                    If API returns an empty list,
+                    city-detail.js will display a default
+                    empty state.
+                -->
+
+                <div class="city-loading">
+                    Loading nearby places...
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div class="footer-brand">
+
+            <a href="/index.html" class="logo">
+
+                <span class="logo-icon">
+                    ✦
+                </span>
+
+                <span>
+                    Tourism India
+                </span>
+
+            </a>
+
+            <p>
+                Discover the beauty, culture and experiences
+                of India.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div class="footer-column">
+
+                <h4>
+                    Explore
+                </h4>
+
+                <a href="/pages/states.html">
+                    States
+                </a>
+
+                <a href="/pages/cities.html">
+                    Cities
+                </a>
+
+                <a href="/pages/places.html">
+                    Tourist Places
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Tourism India
+                </h4>
+
+                <a href="/index.html">
+                    Home
+                </a>
+
+                <a href="#">
+                    About
+                </a>
+
+                <a href="#">
+                    Contact
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Tourism India. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="/js/config.js"></script>
+
+<script src="/js/api.js"></script>
+
+<script src="/js/city-detail.js"></script>
+
+
+</body>
+
+</html>

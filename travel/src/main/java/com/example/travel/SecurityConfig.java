@@ -29,11 +29,49 @@ public class SecurityConfig {
                         // Public GET APIs
                         .requestMatchers(
                                 HttpMethod.GET,
+
+                                // States
                                 "/api/states",
+                                "/api/states/*",
+                                "/api/states/*/cities",
+
+                                // Cities
                                 "/api/cities",
-                                "/api/tourist-places",
+                                "/api/cities/*",
+                                "/api/cities/*/tourist-places",
+
+                                // Categories
                                 "/api/categories",
-                                "/api/tourist-places/*"
+                                "/api/categories/*",
+                                "/api/categories/*/tourist-places",
+
+                                // Tourist Places
+                                "/api/tourist-places",
+                                "/api/tourist-places/*",
+                                "/api/tourist-places/featured",
+                                "/api/tourist-places/popular",
+                                "/api/tourist-places/search",
+                                "/api/tourist-places/filter",
+
+                                // Reviews
+                                "/api/reviews/place/*",
+
+                                // Images
+                                "/api/images/place/*",
+
+                                // Nearby Places
+                                "/api/nearby-places/place/*",
+
+                                // Home Page APIs
+                                "/api/home",
+                                "/api/home/featured-places",
+                                "/api/home/popular-destinations",
+
+                                // Search APIs
+                                "/api/search",
+                                "/api/search/states",
+                                "/api/search/cities",
+                                "/api/search/places"
                         ).permitAll()
 
                         // Everything else requires authentication

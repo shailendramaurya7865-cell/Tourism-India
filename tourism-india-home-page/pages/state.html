@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>State | Tourism India</title>
+
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/state-detail.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="/home.html" class="logo">
+            Tourism <span>India</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/pages/states.html" class="active">Explore</a>
+            <a href="/pages/states.html">Destinations</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/home.html">Home</a>
+                <span>/</span>
+                <a href="/pages/states.html">States</a>
+                <span>/</span>
+                <span id="breadcrumbState">Loading...</span>
+            </div>
+        </div>
+    </section>
+
+    <main>
+
+        <!-- STATE HERO -->
+        <section class="state-hero" id="stateHero">
+            <div class="state-hero-overlay"></div>
+
+            <div class="container state-hero-content">
+                <span class="eyebrow">EXPLORE INDIA</span>
+
+                <h1 id="stateName">Loading...</h1>
+
+                <p id="stateSubtitle">
+                    Discover the beauty, culture and destinations
+                    of this incredible state.
+                </p>
+            </div>
+        </section>
+
+        <!-- ABOUT STATE -->
+        <section class="about-state-section">
+            <div class="container about-state-container">
+
+                <div class="about-state-content">
+                    <span class="section-label">GET TO KNOW THE STATE</span>
+
+                    <h2 id="aboutTitle">About this state</h2>
+
+                    <p id="stateDescription">
+                        Discover the rich culture, beautiful landscapes
+                        and unique experiences that make this state special.
+                    </p>
+                </div>
+
+                <div class="about-state-highlight">
+                    <span class="highlight-icon">✦</span>
+                    <h3>A Journey Worth Taking</h3>
+                    <p>
+                        From remarkable heritage to natural wonders,
+                        discover experiences that make every journey memorable.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- POPULAR CITIES -->
+        <section class="cities-section">
+            <div class="container">
+
+                <div class="section-heading section-heading-row">
+                    <div>
+                        <span class="section-label">PLACES TO EXPLORE</span>
+                        <h2>Popular Cities</h2>
+                        <p>Discover the cities that make this state special.</p>
+                    </div>
+
+                    <a href="#" id="viewAllCities" class="view-all-link">
+                        View All <span>→</span>
+                    </a>
+                </div>
+
+                <div id="citiesGrid" class="cities-grid">
+                    <div class="loading-state">Loading cities...</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TOP TOURIST PLACES -->
+        <section class="places-section">
+            <div class="container">
+
+                <div class="section-heading section-heading-row">
+                    <div>
+                        <span class="section-label">DON'T MISS THESE</span>
+                        <h2>Top Tourist Places</h2>
+                        <p>Explore famous landmarks and hidden gems.</p>
+                    </div>
+
+                    <a href="#" id="viewAllPlaces" class="view-all-link">
+                        View All <span>→</span>
+                    </a>
+                </div>
+
+                <div id="placesGrid" class="places-grid">
+                    <div class="loading-state">Loading tourist places...</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="categories-section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">TRAVEL YOUR WAY</span>
+                    <h2 id="categoriesTitle">
+                        Explore by Categories
+                    </h2>
+                    <p>
+                        Find experiences that match your interests,
+                        from history and spirituality to nature and adventure.
+                    </p>
+                </div>
+
+                <div id="categoriesGrid" class="categories-grid">
+                    <!-- Categories loaded by JavaScript -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- MAP -->
+        <section class="state-map-section">
+            <div class="container">
+
+                <div class="section-heading">
+                    <span class="section-label">FIND YOUR WAY</span>
+                    <h2>Explore <span id="mapStateName">this state</span> on Map</h2>
+                    <p>
+                        Discover where the cities and tourist attractions
+                        are located and start planning your journey.
+                    </p>
+                </div>
+
+                <div class="state-map-card">
+
+                    <!-- Temporary map preview.
+                         Replace this with a real map when coordinates
+                         and map integration are available. -->
+
+                    <div class="map-preview" id="stateMapPreview">
+                        <div class="map-water"></div>
+                        <div class="map-road map-road-one"></div>
+                        <div class="map-road map-road-two"></div>
+                        <div class="map-road map-road-three"></div>
+
+                        <div class="map-label map-label-one">
+                            <span>●</span>
+                            <span id="mapCityOne">Popular City</span>
+                        </div>
+
+                        <div class="map-label map-label-two">
+                            <span>●</span>
+                            <span id="mapCityTwo">Tourist Destination</span>
+                        </div>
+
+                        <div class="map-center-label">
+                            <span class="map-pin">⌖</span>
+                            <h3 id="mapPreviewTitle">Explore India</h3>
+                            <p>Map preview</p>
+                        </div>
+
+                        <span class="map-compass">N ↑</span>
+                        <span class="map-attribution">
+                            Illustrative map preview
+                        </span>
+                    </div>
+
+                    <div class="map-information">
+                        <span class="section-label">PLAN YOUR VISIT</span>
+                        <h3>Every destination is a new discovery.</h3>
+                        <p>
+                            Explore cities, find nearby attractions and
+                            plan your route. Interactive map features
+                            can be added when location data is available.
+                        </p>
+
+                        <a href="/pages/states.html" class="map-action-link">
+                            Explore More States →
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="footer-content">
+                <div>
+                    <a href="/home.html" class="logo">
+                        Tourism <span>India</span>
+                    </a>
+
+                    <p>
+                        Discover the incredible diversity,
+                        culture and beauty of India.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Tourism India. All rights reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- COMMON API CONFIGURATION -->
+    <script src="/js/config.js"></script>
+    <script src="/js/api.js"></script>
+
+    <!-- STATE DETAIL LOGIC -->
+    <script src="/js/state-detail.js"></script>
+
+</body>
+</html>
+```
