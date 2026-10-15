@@ -16,21 +16,14 @@ import java.util.stream.Collectors;
 @Component
 public class TravelMapper {
     public StateDto mapStateDto(State state) {
-        return new StateDto(
-                state.getId(),
-                state.getName()
-        );
+        return new StateDto(state.getId(), state.getName(), "state-slug", "state-image-url", "state-tag-line", "state-description");
     }
 
     public CityDto mapCityDto(City city) {
-        return new CityDto(
-                city.getId(),
-                city.getName()
-        );
+        return new CityDto(city.getId(), "city-slug", city.getName(), "city-tagline", "city-description");
     }
 
     public PlaceDto mapPlaceDto(TouristPlace place) {
-
         RatingDto rating = new RatingDto(
                 place.getAverageRating(),
                 place.getReviewCount()
@@ -59,10 +52,7 @@ public class TravelMapper {
     }
 
     public CategoryDto mapCategoryDto(Category category) {
-        return new CategoryDto(
-                category.getId(),
-                category.getName()
-        );
+        return new CategoryDto(category.getId(), "category-slug", category.getName(), "category-icon-url");
     }
 
     public TouristPlaceResponse mapToResponseTourist(TouristPlace place) {
@@ -74,12 +64,7 @@ public class TravelMapper {
                 .stream()
                 .map(this::mapCategoryDto)
                 .collect(Collectors.toSet());
-        return new TouristPlaceResponse(place.getId(),
-                place.getName(),
-                place.getShortDescription(),
-                mapCityDto(city),
-                mapStateDto(state),
-                categories);
+        return new TouristPlaceResponse(place.getId(), place.getName(), place.getSlug(), "place-short-description", "image-url", mapCityDto(place.getCity()), categories);
 
     }
 
@@ -88,7 +73,7 @@ public class TravelMapper {
         State state = city.getState();
         Long reviewCount = place.getReviewCount();
         Double averageRating = place.getAverageRating();
-        return new TouristPlaceDisplay(place.getId(), place.getName(), "place-slug", city.getName(), state.getName(), averageRating, reviewCount.doubleValue());
+        return new TouristPlaceDisplay(place.getId(), place.getName(), "place-slug", city.getName(), state.getName(), "place-image" ,averageRating, reviewCount.doubleValue());
     }
 
     public TouristPlaceDetailDto mapToResponseTouristDetail(TouristPlace place) {

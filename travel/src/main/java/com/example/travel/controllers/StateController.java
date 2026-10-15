@@ -27,10 +27,6 @@ public class StateController {
         return ResponseEntity.ok(apiStates);
     }
 
-//    @GetMapping("/{stateId}")
-//    public ResponseEntity<ApiResponse<StateDto>> getState(@PathVariable Long stateId) {
-//        return ResponseEntity.ok(ApiResponse.success(stateService.getState(stateId)));
-//    }
 
     @GetMapping("/{stateId}")
     public ResponseEntity<ApiResponse<StateDetailResponse>> getStateDetail(@PathVariable Long stateId) {

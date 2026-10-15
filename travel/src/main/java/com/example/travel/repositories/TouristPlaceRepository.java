@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.util.Arrays;
 import java.util.List;
 
 public interface TouristPlaceRepository extends JpaRepository<TouristPlace, Long> {
@@ -25,8 +24,9 @@ LIMIT 6
         FROM TouristPlace t
         WHERE t.city.state.id = :stateId
         ORDER BY t.averageRating DESC
+            LIMIT 4
     """)
-    List<TouristPlace> findPlacesByState(
+    List<TouristPlace> findTopTouristDestinations(
             @Param("stateId") Long stateId
     );
 

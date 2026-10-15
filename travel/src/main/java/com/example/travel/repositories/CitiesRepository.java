@@ -14,5 +14,5 @@ public interface CitiesRepository extends JpaRepository<City, Long> {
         WHERE c.state.id = :stateId
         ORDER BY c.name
     """)
-    List<City> findCitiesByState(@Param("stateId") Long stateId);
+    List<City> findPopularCities(@Param("stateId") Long stateId);
 }

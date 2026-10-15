@@ -42,17 +42,12 @@ public class StateService {
     }
 
     public StateDetailResponse getStateDetails(Long stateId) {
-        List<City> popularCities = citiesRepository.findCitiesByState(stateId);
-        List<TouristPlace> places = touristPlaceRepository.findPlacesByState(stateId);
-        Set<CategoryDto> categories = places.stream()
-                .flatMap(place -> place.getCategories().stream())
-                .map(mapper::mapCategoryDto)
-                .collect(Collectors.toSet());
+        List<City> popularCities = citiesRepository.findPopularCities(stateId);
+        List<TouristPlace> places = touristPlaceRepository.findTopTouristDestinations(stateId);
         return new StateDetailResponse(
                 getState(stateId),
                 popularCities.stream().map(mapper::mapCityDto).toList(),
-                places.stream().map(mapper::mapToResponseTourist).toList(),
-                categories
+                places.stream().map(mapper::mapToResponseFeaturedPlace).toList()
 
         );
     }
