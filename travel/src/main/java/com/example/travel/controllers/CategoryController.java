@@ -27,6 +27,12 @@ public class CategoryController {
         List<CategoryDto> allCategories = categoryService.getAllCategories();
         ApiResponse<List<CategoryDto>> apiResponse = ApiResponse.success("Categories loaded successfully", allCategories);
         return ResponseEntity.ok(apiResponse);
+    }
 
+    @GetMapping("/popular")
+    public ResponseEntity<ApiResponse<List<CategoryDto>>> getPopularCategories() {
+        List<CategoryDto> popularCategories = categoryService.getPopularCategories();
+        ApiResponse<List<CategoryDto>> apiResponse = ApiResponse.success("Categories loaded successfully", popularCategories);
+        return ResponseEntity.ok(apiResponse);
     }
 }
