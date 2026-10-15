@@ -83,16 +83,12 @@ public class TravelMapper {
 
     }
 
-    public FeaturedTouristPlaceDto mapToResponseFeaturedPlace(TouristPlace place) {
+    public TouristPlaceDisplay mapToResponseFeaturedPlace(TouristPlace place) {
         City city = place.getCity();
         State state = city.getState();
-
-        return new FeaturedTouristPlaceDto(place.getId(),
-                place.getName(),
-                city.getName(),
-                state.getName(),
-                place.getAverageRating());
-
+        Long reviewCount = place.getReviewCount();
+        Double averageRating = place.getAverageRating();
+        return new TouristPlaceDisplay(place.getId(), place.getName(), "place-slug", city.getName(), state.getName(), averageRating, reviewCount.doubleValue());
     }
 
     public TouristPlaceDetailDto mapToResponseTouristDetail(TouristPlace place) {

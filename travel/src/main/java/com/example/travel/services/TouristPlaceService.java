@@ -1,6 +1,6 @@
 package com.example.travel.services;
 
-import com.example.travel.dto.response.FeaturedTouristPlaceDto;
+import com.example.travel.dto.response.TouristPlaceDisplay;
 import com.example.travel.dto.response.TouristPlaceDetailDto;
 import com.example.travel.dto.response.TouristPlaceResponse;
 import com.example.travel.entities.TouristPlace;
@@ -31,7 +31,7 @@ public class TouristPlaceService {
         return mapper.mapToResponseTouristDetail(place);
     }
 
-    public List<FeaturedTouristPlaceDto> getFeaturedTouristPlace() {
+    public List<TouristPlaceDisplay> getFeaturedTouristPlace() {
         return repository.findFeaturedPlaces().stream().map(mapper::mapToResponseFeaturedPlace).toList();
     }
 }

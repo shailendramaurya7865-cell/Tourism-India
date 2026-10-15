@@ -1,7 +1,7 @@
 package com.example.travel.controllers;
 
 import com.example.travel.api.ApiResponse;
-import com.example.travel.dto.response.FeaturedTouristPlaceDto;
+import com.example.travel.dto.response.TouristPlaceDisplay;
 import com.example.travel.dto.response.TouristPlaceDetailDto;
 import com.example.travel.dto.response.TouristPlaceResponse;
 import com.example.travel.services.TouristPlaceService;
@@ -32,7 +32,7 @@ public class TouristPlaceController {
     }
 
     @GetMapping("/featured")
-    public ResponseEntity<ApiResponse<List<FeaturedTouristPlaceDto>>> getFeaturedTouristPlace() {
+    public ResponseEntity<ApiResponse<List<TouristPlaceDisplay>>> getFeaturedTouristPlace() {
         return ResponseEntity.ok(ApiResponse.success(service.getFeaturedTouristPlace()));
     }
 }
