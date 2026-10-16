@@ -22,7 +22,7 @@ public class TouristPlaceController {
     }
 
     @GetMapping
-    public ResponseEntity<ApiResponse<List<TouristPlaceResponse>>> getAllTouristPlaces() {
+    public ResponseEntity<ApiResponse<List<TouristPlaceDisplay>>> getAllTouristPlaces() {
         return ResponseEntity.ok(ApiResponse.success("Tourist places retrieved successfully", service.getAllTouristPlaces()));
     }
 

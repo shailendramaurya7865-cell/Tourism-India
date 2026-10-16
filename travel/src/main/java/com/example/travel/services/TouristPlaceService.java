@@ -7,6 +7,7 @@ import com.example.travel.entities.TouristPlace;
 import com.example.travel.exception.ResourceNotFoundException;
 import com.example.travel.mapper.TravelMapper;
 import com.example.travel.repositories.TouristPlaceRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +23,9 @@ public class TouristPlaceService {
         this.mapper = mapper;
     }
 
-    public List<TouristPlaceResponse> getAllTouristPlaces() {
-        return repository.findAll().stream().map(mapper::mapToResponseTourist).toList();
+    public List<TouristPlaceDisplay> getAllTouristPlaces() {
+        return repository.findAll(PageRequest.of(0, 30)).getContent().stream()
+                .map(mapper::mapToResponseFeaturedPlace).toList();
     }
 
     public TouristPlaceDetailDto getTouristPlaceDetail(Long id) {
