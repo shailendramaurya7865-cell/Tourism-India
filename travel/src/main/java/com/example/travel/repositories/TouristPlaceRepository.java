@@ -12,35 +12,35 @@ public interface TouristPlaceRepository extends JpaRepository<TouristPlace, Long
     List<TouristPlace> findByCityId(Long cityId);
 
     @Query("""
-SELECT t
-FROM TouristPlace t
-ORDER BY t.averageRating DESC
-LIMIT 6
-""")
+            SELECT t
+            FROM TouristPlace t
+            ORDER BY t.averageRating DESC
+            LIMIT 6
+            """)
     List<TouristPlace> findFeaturedPlaces();
 
     @Query("""
-        SELECT t
-        FROM TouristPlace t
-        WHERE t.city.state.id = :stateId
-        ORDER BY t.averageRating DESC
-            LIMIT 4
-    """)
+                SELECT t
+                FROM TouristPlace t
+                WHERE t.city.state.id = :stateId
+                ORDER BY t.averageRating DESC
+                LIMIT 4
+            """)
     List<TouristPlace> findTopTouristDestinations(
             @Param("stateId") Long stateId
     );
 
 
     @Query("""
-        SELECT t
-        FROM TouristPlace t
-        WHERE t.city.id = :cityId
-        ORDER BY t.averageRating DESC
-    """)
-    List<TouristPlace> findPlacesByCity(
+                SELECT t
+                FROM TouristPlace t
+                WHERE t.city.id = :cityId
+                ORDER BY t.averageRating DESC
+                LIMIT 4
+            """)
+    List<TouristPlace> findTopTouristPlaces(
             @Param("cityId") Long cityId
     );
-
 
 
 }

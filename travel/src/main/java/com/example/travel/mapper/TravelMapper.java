@@ -1,10 +1,7 @@
 package com.example.travel.mapper;
 
 import com.example.travel.dto.response.*;
-import com.example.travel.entities.Category;
-import com.example.travel.entities.City;
-import com.example.travel.entities.State;
-import com.example.travel.entities.TouristPlace;
+import com.example.travel.entities.*;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
@@ -28,17 +25,14 @@ public class TravelMapper {
                 place.getAverageRating(),
                 place.getReviewCount()
         );
-
         String image = null;
 
         if (place.getConfig() != null && !place.getConfig().isBlank()) {
             try {
                 JsonNode config = new ObjectMapper().readTree(place.getConfig());
-
                 if (config.has("image")) {
                     image = config.get("image").asText();
                 }
-
             } catch (Exception ignored) {
             }
         }
@@ -74,6 +68,10 @@ public class TravelMapper {
         Long reviewCount = place.getReviewCount();
         Double averageRating = place.getAverageRating();
         return new TouristPlaceDisplay(place.getId(), place.getName(), "place-slug", city.getName(), state.getName(), "place-image" ,averageRating, reviewCount.doubleValue());
+    }
+
+    public CityDisplay mapCityDisplay(City city) {
+        return new CityDisplay(city.getId(), city.getName(), "city-image-url", city.getState().getId(), city.getState().getName());
     }
 
     public TouristPlaceDetailDto mapToResponseTouristDetail(TouristPlace place) {
@@ -115,4 +113,10 @@ public class TravelMapper {
                 rating
         );
     }
+
+    public NearbyCityDisplay mapToNearbyCityDisplay(CityNearbyCities nearbyCity) {
+        City city = nearbyCity.getNearbyCity();
+        return new NearbyCityDisplay(city.getId(), city.getName(), "image-url", city.getState().getId(), city.getState().getName(), nearbyCity.getDistanceKm().doubleValue());
+    }
+
 }

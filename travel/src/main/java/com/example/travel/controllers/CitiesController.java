@@ -13,9 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cities")
 public class CitiesController {
-
     private final CitiesService cityService;
-
     public CitiesController(CitiesService cityService) {
         this.cityService = cityService;
     }
@@ -29,7 +27,7 @@ public class CitiesController {
 
     @GetMapping("/{cityId}")
     public ResponseEntity<ApiResponse<CityDetailResponse>> getCityDetail(@PathVariable Long cityId) {
-        return ResponseEntity.ok(ApiResponse.success(cityService.getCityDetail(cityId)));
+        return ResponseEntity.ok(ApiResponse.success("City Details loaded successfully", cityService.getCityDetail(cityId)));
 
     }
 }
