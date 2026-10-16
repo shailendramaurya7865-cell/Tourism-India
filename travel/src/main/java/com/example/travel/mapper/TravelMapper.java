@@ -17,7 +17,7 @@ public class TravelMapper {
     }
 
     public CityDto mapCityDto(City city) {
-        return new CityDto(city.getId(), "city-slug", city.getName(), "city-tagline", "city-description");
+        return new CityDto(city.getId(), "city-slug", city.getName(), "city-image-url", city.getState().getId(), city.getState().getName(), "city-description", "city-tag-line");
     }
 
     public PlaceDto mapPlaceDto(TouristPlace place) {
