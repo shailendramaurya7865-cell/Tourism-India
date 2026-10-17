@@ -27,7 +27,7 @@ public class TouristPlaceController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<TouristPlaceDetailDto>> getTouristPlaceDetail(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<TouristPlaceResponse>> getTouristPlaceDetail(@PathVariable Long id) {
         return ResponseEntity.ok(ApiResponse.success(service.getTouristPlaceDetail(id)));
     }
 

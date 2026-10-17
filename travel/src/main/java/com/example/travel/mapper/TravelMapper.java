@@ -20,54 +20,30 @@ public class TravelMapper {
         return new CityDto(city.getId(), "city-slug", city.getName(), "city-image-url", city.getState().getId(), city.getState().getName(), "city-description", "city-tag-line");
     }
 
-    public PlaceDto mapPlaceDto(TouristPlace place) {
-        RatingDto rating = new RatingDto(
-                place.getAverageRating(),
-                place.getReviewCount()
-        );
-        String image = null;
-
-        if (place.getConfig() != null && !place.getConfig().isBlank()) {
-            try {
-                JsonNode config = new ObjectMapper().readTree(place.getConfig());
-                if (config.has("image")) {
-                    image = config.get("image").asText();
-                }
-            } catch (Exception ignored) {
-            }
-        }
-
-        return new PlaceDto(
-                place.getId(),
-                place.getName(),
-                image,
-                rating
-        );
-    }
-
     public CategoryDto mapCategoryDto(Category category) {
         return new CategoryDto(category.getId(), "category-slug", category.getName(), "category-icon-url");
     }
 
-    public TouristPlaceResponse mapToResponseTourist(TouristPlace place) {
-
-        City city = place.getCity();
-        State state = city.getState();
-
-        Set<CategoryDto> categories = place.getCategories()
-                .stream()
-                .map(this::mapCategoryDto)
-                .collect(Collectors.toSet());
-        return new TouristPlaceResponse(place.getId(), place.getName(), place.getSlug(), "place-short-description", "image-url", mapCityDto(place.getCity()), categories);
-
-    }
+//    public TouristPlaceResponse mapToResponseTourist(TouristPlace place) {
+//
+//        City city = place.getCity();
+//        State state = city.getState();
+//
+//        Set<CategoryDto> categories = place.getCategories()
+//                .stream()
+//                .map(this::mapCategoryDto)
+//                .collect(Collectors.toSet());
+//
+//        return new TouristPlaceResponse(place.getId(), place.getName(), place.getSlug(), "place-short-description", "image-url", mapCityDto(place.getCity()), categories);
+//
+//    }
 
     public TouristPlaceDisplay mapToResponseFeaturedPlace(TouristPlace place) {
         City city = place.getCity();
         State state = city.getState();
         Long reviewCount = place.getReviewCount();
         Double averageRating = place.getAverageRating();
-        return new TouristPlaceDisplay(place.getId(), place.getName(), "place-slug", city.getName(), state.getName(), "place-image" ,averageRating, reviewCount.doubleValue());
+        return new TouristPlaceDisplay(place.getId(), place.getName(), "place-slug", city.getName(), state.getName(), "place-image", averageRating, reviewCount.doubleValue());
     }
 
     public CityDisplay mapCityDisplay(City city) {
@@ -117,6 +93,12 @@ public class TravelMapper {
     public NearbyCityDisplay mapToNearbyCityDisplay(CityNearbyCities nearbyCity) {
         City city = nearbyCity.getNearbyCity();
         return new NearbyCityDisplay(city.getId(), city.getName(), "image-url", city.getState().getId(), city.getState().getName(), nearbyCity.getDistanceKm().doubleValue());
+    }
+
+
+    public NearbyPlaceDto mapNearbyPlaceDto(PlaceNearbyPlaces nearbyPlace) {
+        TouristPlace nearbyTouristPlace = nearbyPlace.getNearbyPlace();
+        return new NearbyPlaceDto(nearbyTouristPlace.getId(), nearbyTouristPlace.getName(), "nearby place - image", nearbyPlace.getDistanceKm().toBigInteger().doubleValue());
     }
 
 }
